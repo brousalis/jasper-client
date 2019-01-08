@@ -19,21 +19,23 @@ class GoogleTTSPlugin(plugin.TTSPlugin):
 
         language = orig_language.lower()
 
-        if language not in gtts.gTTS.LANGUAGES:
+        languages = gtts.lang.tts_langs()
+
+        if language not in languages:
             language = language.split('-')[0]
 
-        if language not in gtts.gTTS.LANGUAGES:
+        if language not in languages:
             raise ValueError("Language '%s' ('%s') not supported" %
                              (language, orig_language))
 
         self.language = language
 
     def say(self, phrase):
-
         tts = gtts.gTTS(text=phrase, lang=self.language)
         with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as f:
             tmpfile = f.name
         tts.save(tmpfile)
-        data = self.mp3_to_wave(tmpfile)
+        os.system("omxplayer --adev=local " + tmpfile)
+        #data = self.mp3_to_wave(tmpfile)
         os.remove(tmpfile)
-        return data
+        return ""

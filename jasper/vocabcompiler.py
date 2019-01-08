@@ -137,6 +137,9 @@ class VocabularyCompiler(object):
         else:
             self._logger.info('Starting compilation...')
             try:
+                print(config)
+                print(self.path)
+                print(phrases)
                 compilation_func(config, self.path, phrases)
             except Exception as e:
                 msg = "Fatal compilation error occured"

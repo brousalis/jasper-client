@@ -20,7 +20,7 @@ class Conversation(i18n.GettextMixin):
 
     def greet(self):
         if 'first_name' in self.profile:
-            salutation = (self.gettext("How can I be of service, %s?")
+            salutation = (self.gettext("computer online, %s")
                           % self.profile["first_name"])
         else:
             salutation = self.gettext("How can I be of service?")

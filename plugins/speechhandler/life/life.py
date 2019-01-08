@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 import random
+import requests
 from jasper import plugin
 
 
 class MeaningOfLifePlugin(plugin.SpeechHandlerPlugin):
     def get_phrases(self):
-        return [self.gettext("MEANING OF LIFE")]
+        return [self.gettext("LIGHTS OFF")]
 
     def handle(self, text, mic):
         """
@@ -16,14 +17,15 @@ class MeaningOfLifePlugin(plugin.SpeechHandlerPlugin):
         text -- user-input, typically transcribed speech
         mic -- used to interact with the user (for both input and output)
         """
-        messages = [
-            self.gettext("It's 42, you idiot."),
-            self.gettext("It's 42. How many times do I have to tell you?")
-        ]
+        mic.say(self.gettext("LIGHTS OFF"))
 
-        message = random.choice(messages)
+	self.off()
+        
+    def off(self):
+	r = requests.get('https://www.pete.sh/api/hue/off',
+			 headers={'User-Agent': 'Mozilla/5.0'})
+	return r.json()
 
-        mic.say(message)
 
     def is_valid(self, text):
         """
