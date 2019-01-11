@@ -22,7 +22,7 @@ class MeaningOfLifePlugin(plugin.SpeechHandlerPlugin):
 	self.off()
         
     def off(self):
-	r = requests.get('https://www.pete.sh/api/hue/off',
+        r = requests.get('http://localhost:5000/api/hue/off',
 			 headers={'User-Agent': 'Mozilla/5.0'})
 	return r.json()
 
