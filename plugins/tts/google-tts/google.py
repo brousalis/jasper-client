@@ -32,10 +32,13 @@ class GoogleTTSPlugin(plugin.TTSPlugin):
 
     def say(self, phrase):
         tts = gtts.gTTS(text=phrase, lang=self.language)
-        with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as f:
+        with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as f:
             tmpfile = f.name
         tts.save(tmpfile)
-        os.system("omxplayer --adev=local " + tmpfile)
-        #data = self.mp3_to_wave(tmpfile)
+        # data = self.mp3_to_wave(tmpfile)
+        # return data
+        os.system("mpg123 -w /tmp/out.wav " + tmpfile)
+        os.system("aplay /tmp/out.wav")
         os.remove(tmpfile)
-        return ""
+        os.remove("/tmp/out.wav")
+        return ''

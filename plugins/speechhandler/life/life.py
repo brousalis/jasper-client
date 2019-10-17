@@ -6,7 +6,7 @@ from jasper import plugin
 
 class MeaningOfLifePlugin(plugin.SpeechHandlerPlugin):
     def get_phrases(self):
-        return [self.gettext("LIGHTS OFF")]
+        return [self.gettext("WHO IS HEATHER")]
 
     def handle(self, text, mic):
         """
@@ -17,7 +17,7 @@ class MeaningOfLifePlugin(plugin.SpeechHandlerPlugin):
         text -- user-input, typically transcribed speech
         mic -- used to interact with the user (for both input and output)
         """
-        mic.say(self.gettext("LIGHTS OFF"))
+        mic.say(self.gettext("THE BEST WIFE EVER"))
 
 	self.off()
         

@@ -90,21 +90,24 @@ class AudioDevice(object):
 
     def play_fp(self, fp, chunksize=1024, add_padding=False):
         print('[Play Fp] %s' % fp)
-        #w = wave.open(fp, 'rb')
-        #channels = w.getnchannels()
-        #bits = w.getsampwidth()*8
-        #rate = w.getframerate()
-        #with self.open_stream(bits, channels, rate,
-        #                      chunksize=chunksize) as stream:
-        #    data = w.readframes(chunksize)
-        #    if add_padding and len(data) > 0:
-        #        data += b'\00'*(chunksize - len(data))
-        #    while data:
-        #        stream.write(data)
-        #        data = w.readframes(chunksize)
-        #        if add_padding and len(data) > 0:
-        #            data += b'\00'*(chunksize - len(data))
-        #w.close()
+        # w = wave.open(fp, 'rb')
+        # channels = w.getnchannels()
+        # bits = w.getsampwidth()*8
+        # rate = w.getframerate()
+        # print('[channels] %s' % channels)
+        # print('[bits] %s' % bits)
+        # print('[rate] %s' % rate)
+        # with self.open_stream(bits, channels, rate,
+        #                       chunksize=chunksize) as stream:
+        #     data = w.readframes(chunksize)
+        #     if add_padding and len(data) > 0:
+        #         data += b'\00'*(chunksize - len(data))
+        #     while data:
+        #         stream.write(data)
+        #         data = w.readframes(chunksize)
+        #         if add_padding and len(data) > 0:
+        #             data += b'\00'*(chunksize - len(data))
+        # w.close()
 
     def play_file(self, filename, *args, **kwargs):
         print('[Play File] %s' % filename)
